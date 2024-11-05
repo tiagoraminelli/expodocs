@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <h2>Editar Persona</h2>
+    <div id="mensaje"></div> <!-- Mensajes de error o éxito -->
+    <form id="editarPersonaForm" onsubmit="return false;"> <!-- Prevenir envío predeterminado -->
+        <input type="hidden" name="id" id="inputId" value=""> <!-- Campo oculto para el ID de la persona -->
+
+        <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" value="" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="inputApellidos" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" id="inputApellidos" name="apellidos" value="" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="inputTelefono" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="inputTelefono" name="telefono" value="" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" name="email" value="" required>
+        </div>
+
+        <button onclick="cargarDatos()" type="button" class="btn btn-primary">Guardar</button> <!-- Cambiar tipo a button -->
+        <a href="./ListPersona.php" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

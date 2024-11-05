@@ -1,0 +1,48 @@
+<section id="eventoIdSeleccionado">
+
+    <h1>Detalles del Evento</h1>
+
+    <div id="evento-details">
+        <!-- Aquí se cargarán dinámicamente los detalles del evento -->
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Obtener el ID del evento (puedes cambiar esto según cómo obtengas el ID)
+            var idEvento = 1; // Ejemplo: ID del evento que quieres mostrar
+
+            // Hacer la solicitud AJAX
+            $.ajax({
+                type: 'POST',
+                url: './sistema/funciones/informacionEventos.php',
+                data: { id: idEvento },
+                dataType: 'json',
+                success: function(response) {
+                    // Manejar la respuesta exitosa
+                    if (response.error) {
+                        // Mostrar mensaje de error si hay un problema
+                        $('#evento-details').html('<p>' + response.error + '</p>');
+                    } else {
+                        // Construir el HTML con los detalles del evento
+                        var detallesHTML = '<p><strong>ID:</strong> ' + response.id + '</p>';
+                        detallesHTML += '<p><strong>Título:</strong> ' + response.titulo + '</p>';
+                        detallesHTML += '<p><strong>Descripción:</strong> ' + response.descripcion + '</p>';
+                        detallesHTML += '<p><strong>Fecha:</strong> ' + response.fecha + '</p>';
+                        detallesHTML += '<p><strong>Hora:</strong> ' + response.hora + '</p>';
+                        detallesHTML += '<p><strong>Duración:</strong> ' + response.duracion + '</p>';
+                        detallesHTML += '<p><strong>Idioma:</strong> ' + response.idioma + '</p>';
+                        detallesHTML += '<p><strong>ID del Disertante:</strong> ' + response.disertante_id + '</p>';
+
+                        // Mostrar los detalles en el contenedor
+                        $('#evento-details').html(detallesHTML);
+                    }
+                },
+                error: function() {
+                    // Manejar errores de la solicitud AJAX
+                    $('#evento-details').html('<p>Ocurrió un error al cargar los detalles del evento.</p>');
+                }
+            });
+        });
+    </script>
+</section>
